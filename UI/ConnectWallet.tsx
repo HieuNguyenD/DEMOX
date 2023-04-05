@@ -8,11 +8,11 @@ import isEqual from 'lodash.isequal';
 
 function CreateSmartAccountComponent() {
   const createSmartContractWallet = async (privateKey: string, chainId: number): Promise<any> => {
-    const rpcUrl = 'https://matic-mumbai.chainstacklabs.com/';
+    const rpcUrl = 'https://rpc-mumbai.maticvigil.com';
     try {
       if (privateKey) {
         const rpcProvider = new JsonRpcProvider(rpcUrl, chainId);
-		console.log("rpcProvider", rpcProvider);
+		    console.log("rpcProvider", rpcProvider);
         const signer = new Wallet(privateKey, rpcProvider) as Signer;
         const eoa = await signer.getAddress();
         console.log('eoa Address', eoa);
@@ -23,13 +23,13 @@ function CreateSmartAccountComponent() {
           networkConfig: [
             {
               chainId: ChainId.POLYGON_MUMBAI,
-              dappAPIKey: '59fRCMXvk.8a1652f0-b522-4ea7-b296-98628499aee3',
-              providerUrl: rpcUrl,
+              dappAPIKey: '59fRCMXvk.8a1652f0-b522-4ea7-b296-98628499aee3'
             },
           ],
         });
-        console.log('prepare init smart Account');
+        console.log('1111, prepare init smart Account');
         const smartAccount = await wallet.init();
+        console.log(2222);
         console.log('init smart Account', smartAccount);
         let deploySCW = null;
         if (smartAccount) {
@@ -43,7 +43,7 @@ function CreateSmartAccountComponent() {
         return null;
       }
     } catch (e) {
-      console.error(e);
+      console.error(999, e);
     }
     return null;
   };
